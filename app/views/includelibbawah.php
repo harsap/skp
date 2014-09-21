@@ -1,17 +1,18 @@
 <script src="<?php echo base_url(); ?>static/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
                                     <script src="<?php echo base_url(); ?>static/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
                                     <script src="<?php echo base_url(); ?>static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-                                    <script src="<?php echo base_url(); ?>static/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+                                    <script src="<?php echo base_url(); ?>static/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
                                     <script src="<?php echo base_url(); ?>static/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
                                     <script src="<?php echo base_url(); ?>static/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
 
                                     <script type="text/javascript" src="<?php echo base_url(); ?>static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-                                    <script type="text/javascript" src="<?php echo base_url(); ?>static/assets/scripts/maskedinput.js"></script>    
+                                    <script type="text/javascript" src="<?php echo base_url(); ?>static/assets/scripts/maskedinput.js"></script>
                                     <script type='text/javascript' src="<?php echo base_url(); ?>static/assets/plugins/jquery-timer/jquery.timer.js"></script>
                                     <script type="text/javascript" src="<?php echo base_url(); ?>static/assets/plugins/jquery-numberformat/akunting.js"></script>
-                                    <script type='text/javascript' src="<?php echo base_url(); ?>static/assets/plugins/jquery-numberformat/numericpack.min.js"></script> 
-                                    <script src="<?php echo base_url(); ?>static/assets/scripts/app.js"></script>   
-                                    <script src="<?php echo base_url(); ?>static/assets/scripts/sidebar.js"></script>    
+                                    <script type='text/javascript' src="<?php echo base_url(); ?>static/assets/plugins/jquery-numberformat/numericpack.min.js"></script>
+                                    <script src="<?php echo base_url(); ?>static/assets/scripts/app.js"></script>
+                                    <script src="<?php echo base_url(); ?>static/assets/scripts/sidebar.js"></script>
+                                    <script src="<?php echo base_url(); ?>static/assets/plugins/chosen/chosen.jquery.js"></script>
                                     <script type="text/javascript">
 
                                             $(document).ready(function() {
@@ -130,4 +131,4 @@
                                             ;
 
 
-                                    </script> 
+                                    </script>
