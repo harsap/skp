@@ -12,11 +12,11 @@ if (!defined('BASEPATH')) {
 class pembuatan extends CI_Controller{
    public function __construct() {
         parent::__construct();
-        $this->ion_auth->check_uri_permissions(); 
-        // $this->load->model('Personilmodel', 'personilmodel');
+        $this->ion_auth->check_uri_permissions();
+        $this->load->model('skp_model', 'skp_model');
     }
     public function index() {
-    	$data['ganteng'] = TRUE;
+      $data['list_pegawai'] = $this->skp_model->get_all_pegawai();
         // $data['listgol'] = $this->personilmodel->getallgolongan();
         // $data['listeselon'] = $this->personilmodel->geteselon();
         $this->template->load('mainlayout', 'index', $data);
