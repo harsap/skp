@@ -185,7 +185,7 @@
 			  </tr>
 			  <tr>
 			    <td><input type="text" class="form-control col-sm-12" name="nomor_kegiatan_1" value="1"></td>
-			    <td><input type="text" name="ketTugasJab" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="ketTugasJab" class="form-control col-sm-12" required></td>
 			    <td><input type="text" name="akJab" class="form-control col-sm-12"></td>
 			    <td><input type="text" name="kuantJab" class="form-control col-sm-12"></td>
 			    <td><input type="text" name="kualJab" class="form-control col-sm-12"></td>

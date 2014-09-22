@@ -42,6 +42,21 @@ class skp_model extends CI_Model {
             'tgl_pengajuan'=>date('Y-m-d')
             );
     $this->db->insert('public.tminputskp',$data);
+
+    if($this->input->post('ketTugasTam')!=null){
+      $data2 = array(
+              'c_nik_pgw'=>$this->input->post('nikPegawai'),
+              'c_nik_pgw_atasan'=>$this->input->post('nikAtasan'),
+              'nomor_kegiatan'=>$this->input->post('nomor_kegiatan_tambahan_1'),
+              'deskripsi_kegiatan'=>$this->input->post('ketTugasTam'),
+              'nilai_angka_kredit'=>$this->input->post('akTam'),
+              'target_kuantitatif'=>$this->input->post('kuantTam'),
+              'target_kualitas'=>$this->input->post('kualTam'),
+              'waktu'=>$this->input->post('wakTam'),
+              'biaya'=>$this->input->post('biaTam')
+              );
+      $this->db->insert('public.tminputskp_tmbhn',$data2);
+    }
   }
 
 }
