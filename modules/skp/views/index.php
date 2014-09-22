@@ -83,6 +83,9 @@
 	    		</table>
 	    	</div>
 	    	<div class='col-sm-6'>
+          <?php if($this->uri->segment(4)) {
+            $pegawai_result = $pegawai->row();
+            ?>
 	    		<table class="col-sm-12 table table-bordered" id="tblDinilai">
 	    			<tr>
 	    			   	<th width="10%">No</th>
@@ -92,17 +95,17 @@
 	    			<tr>
 	    				<td>1</td>
 	    			    <td width="20%">Nama</td>
-	    			    <td id="dinilaiName"></td>
+	    			    <td id="dinilaiName"><?php echo $pegawai_result->peg_nama; ?></td>
 	    			</tr>
 	    			<tr>
 	    			    <td>2</td>
 	    			    <td>NIK</td>
-	    			    <td id="dinilaiNik"></td>
+	    			    <td id="dinilaiNik"><?php echo $pegawai_result->peg_nip_baru; ?></td>
 	    			</tr>
 	    			<tr>
 	    			    <td>3</td>
 	    			    <td>Jabatan</td>
-	    			    <td id="dinilaiJab"></td>
+	    			    <td id="dinilaiJab"><?php echo $pegawai_result->jabatan_nama; ?></td>
 	    			</tr>
 	    			<tr>
 	    			    <td>4</td>
@@ -112,9 +115,41 @@
 	    			<tr>
 	    			    <td>5</td>
 	    			    <td>Unit Kerja</td>
-	    			    <td id="dinilaiUK"></td>
+	    			    <td id="dinilaiUK"><?php echo $pegawai_result->unit_kerja_nama; ?></td>
 	    			</tr>
 	    		</table>
+          <?php } else { ?>
+            <table class="col-sm-12 table table-bordered" id="tblDinilai">
+              <tr>
+                   <th width="10%">No</th>
+                   <th colspan="2">II. Pegawai Negeri Sipil Yang Dinilai</th>
+
+              </tr>
+              <tr>
+                <td>1</td>
+                <td width="20%">Nama</td>
+                <td rowspan="5">
+                  <i>Pilih Pegawai Terlebih dahulu</i>
+                </td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>NIK</td>
+              </tr>
+              <tr>
+                  <td>3</td>
+                  <td>Jabatan</td>
+              </tr>
+              <tr>
+                  <td>4</td>
+                  <td>Pangkat</td>
+              </tr>
+              <tr>
+                  <td>5</td>
+                  <td>Unit Kerja</td>
+              </tr>
+            </table>
+          <?php } ?>
 	   		</div>
 	</div>
 </div>
@@ -124,7 +159,7 @@
 	    	Kegiatan Tugas Pokok Jabatan
 	    </h3>
 	    <hr>
-      <?php if($this->uri->segment(3)) { ?>
+      <?php if($this->uri->segment(4)) { ?>
 			<table class="table table-bordered table-stripped" id="tblJabatan">
 			  <tr>
 			 	<th colspan="7">
@@ -163,7 +198,7 @@
 	<div class="col-sm-12">
 	    <h3>Kegiatan Tugas Pokok Tambahan</h3>
 	    <hr>
-      <?php if($this->uri->segment(3)) { ?>
+      <?php if($this->uri->segment(4)) { ?>
 			<table class="table table-bordered table-stripped" id="tblTambahan">
 			<tr>
 			 	<th colspan="7">
