@@ -25,13 +25,6 @@ class pembuatan extends CI_Controller{
     }
     public function tambahKegiatan(){
       $this->skp_model->tambah_kegiatan();
-      
-      $data['list_pegawai'] = $this->skp_model->get_all_pegawai();
-      $peg_id = $this->input->post('select_peg_id');
-      $data['pegawai'] = $this->skp_model->get_pegawai($peg_id);
-
-      // $data['kegiatan'] = $this->skp_model->get_kegiatan();
-      $this->template->load('mainlayout', 'index', $data);
     }
 
 }
