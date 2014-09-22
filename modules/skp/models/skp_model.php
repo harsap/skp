@@ -17,5 +17,15 @@ class skp_model extends CI_Model {
     return $query;
   }
 
+  function get_pegawai($peg_id){
+    $this->db->select('*');
+    $this->db->from('spg_pegawai');
+    $this->db->join('m_spg_jabatan','m_spg_jabatan.jabatan_id = spg_pegawai.jabatan_id');
+    $this->db->join('m_spg_unit_kerja','m_spg_unit_kerja.unit_kerja_id = spg_pegawai.unit_kerja_id');
+    $this->db->where('peg_id',$peg_id);
+    $query = $this->db->get();
+
+    return $query;
+    }
 
 }
