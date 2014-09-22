@@ -25,6 +25,16 @@ class pembuatan extends CI_Controller{
         $this->template->load('mainlayout', 'index', $data);
     }
 
+    public function cetak(){
+      $data['list_pegawai'] = $this->skp_model->get_all_pegawai();
+      $penilai_id = $this->input->post('nikAtasan');
+      $peg_id = $this->input->post('select_peg_id');
+      $data['pegawai'] = $this->skp_model->get_pegawai($peg_id);
+      $data['kegiatan'] = $this->skp_model->get_kegiatan_to_cetak($penilai_id, $peg_id);
+        // $data['listgol'] = $this->personilmodel->getallgolongan();
+        // $data['listeselon'] = $this->personilmodel->geteselon();
+        $this->template->load('mainlayout', 'print', $data);        
+    }
 
     public function tambahKegiatan(){
 

@@ -26,7 +26,18 @@ class skp_model extends CI_Model {
     $query = $this->db->get();
 
     return $query;
-    }
+  }
+
+  function get_kegiatan_to_cetak($penilai_id, $peg_id){
+    $this->db->select('*');
+    $this->db->from('tminputskp');
+    $this->db->where('c_nik_pgw',$peg_id);
+    $this->db->where('c_nik_pgw_atasan',$penilai_id);
+    $this->db->order_by('nomor_kegiatan', 'asc');
+    $query = $this->db->get();
+
+    return $query;
+  }
 
     // function tambah_kegiatan(){
     //   $data = array(
@@ -57,8 +68,4 @@ class skp_model extends CI_Model {
     //             );
     //     $this->db->insert('public.tminputskp_tmbhn',$data2);
     //   }
-
-  }
-
-
 }

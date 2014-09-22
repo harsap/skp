@@ -12,7 +12,7 @@
                 <i class="icon-angle-down"></i>     
             </a>
             <ul class="dropdown-menu">
-                <li  ><a tabindex="-1" href="javascript:;">Cetak Formulir SKP  </a> </li>
+                <li  ><a tabindex="-1" href="<?php echo base_url('skp/cetak'); ?>">Cetak Formulir SKP  </a> </li>
                 <li  ><a tabindex="-1" href="<?php echo base_url('skp/pembuatan'); ?>">Pembuatan SKP  </a> </li>
                 <li  ><a tabindex="-1" href="javascript:;">Penilain SKP  </a> </li>               
             </ul>
