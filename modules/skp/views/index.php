@@ -1,3 +1,35 @@
+<!-- Modal -->
+<div class="modal fade" id="pilih_pegawai" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pilih Pegawai</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="<?php echo base_url();?>skp/pembuatan/index" method="post">
+        <select name="select_peg_id" width="350px" class="pegawai-select col-sm-12">
+        <?php
+          foreach ($list_pegawai->result() as $list_pegawai_result) {  ?>
+            <option name="select_peg_id" value="<?php echo $list_pegawai_result->peg_id ?>"><?php echo $list_pegawai_result->peg_nama ?> (<?php echo $list_pegawai_result->peg_nip_baru ?>)</option>
+          <?php } ?>
+        </select>
+        <script charset="utf-8">
+        $(window).load(function(){
+           $(".pegawai-select").chosen();
+         });
+        </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Pilih Pegawai</button>
+      	</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <ul class="page-breadcrumb breadcrumb">
     <li>
         <i class="icon-home"></i>
@@ -9,45 +41,12 @@
     </li>
 </ul>
 <div class="row">
-	<form action="#" method="post">
+	<form role="form" action="<?php echo base_url();?>skp/pembuatan/tambahKegiatan" method="post">
 	<div class="col-sm-12">
 	    <h3>
 	    	Form Entry Formulir Sasaran Kinerja Pegawai (SKP)
 	    	<button type="button" data-toggle="modal" data-target="#pilih_pegawai" class="btn btn-md btn-primary pull-right"><i class="glyphicon glyphicon-user"></i> Pilih Pegawai Yang Akan Dinilai</button>
-	    </h3><br>
-            <!-- Modal -->
-            <div class="modal fade" id="pilih_pegawai" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Pilih Pegawai</h4>
-                  </div>
-                  <div class="modal-body">
-                    <form role="form" action="<?php echo base_url();?>skp/pembuatan/index" method="post">
-                    <select name="select_peg_id" width="350px" class="pegawai-select col-sm-12">
-                    <?php
-                      foreach ($list_pegawai->result() as $list_pegawai_result) {  ?>
-                        <option value="<?php echo $list_pegawai_result->peg_id ?>"><?php echo $list_pegawai_result->peg_nama ?> (<?php echo $list_pegawai_result->peg_nip_baru ?>)</option>
-                      <?php } ?>
-                    </select>
-
-                    <script charset="utf-8">
-                    $(window).load(function(){
-                       $(".pegawai-select").chosen();
-                     });
-                    </script>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Pilih Pegawai</button>
-                  </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
+	    </h3><br> 
 	    	<div class='col-sm-6'>
 	    		<?php $user = $this->ion_auth->get_data_user_by_id();
 	    			  $listuser = $this->ion_auth->get_user_name_all();
@@ -65,7 +64,7 @@
 	    			<tr>
 	    			    <td>2</td>
 	    			    <td>NIK</td>
-	    			    <td><?php echo $user->peg_nip_baru; ?></td>
+	    			    <td><?php echo $user->peg_nip_baru; ?><input type="hidden" name="nikAtasan" value="<?php echo $user->peg_nip_baru; ?>"></td>
 	    			</tr>
 	    			<tr>
 	    			    <td>3</td>
@@ -103,7 +102,7 @@
 	    			<tr>
 	    			    <td>2</td>
 	    			    <td>NIK</td>
-	    			    <td id="dinilaiNik"><?php echo $pegawai_result->peg_nip_baru; ?></td>
+	    			    <td id="dinilaiNik"><?php echo $pegawai_result->peg_nip_baru; ?><input type="hidden" name="nikPegawai" value="<?php echo $pegawai_result->peg_nip_baru; ?>"></td>
 	    			</tr>
 	    			<tr>
 	    			    <td>3</td>
@@ -186,12 +185,12 @@
 			  </tr>
 			  <tr>
 			    <td><input type="text" class="form-control col-sm-12" name="nomor_kegiatan_1" value="1"></td>
-			    <td><input type="text" name="" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="ketTugasJab" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="akJab" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="kuantJab" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="kualJab" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="wakJab" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="biaJab" class="form-control col-sm-12"></td>
 			  </tr>
 			</table>
     <?php } else { ?>
@@ -224,19 +223,19 @@
 			    <td>Biaya</td>
 			  </tr>
 			  <tr>
-			    <td><input type="text" class="form-control col-sm-12" name="nomor_kegiatan_1" value="1"></td>
-			    <td><input type="text" class="form-control col-sm-12"></td>
-			    <td><input type="text" class="form-control col-sm-12"></td>
-			    <td><input type="text" class="form-control col-sm-12"></td>
-			    <td><input type="text" class="form-control col-sm-12"></td>
-			    <td><input type="text" class="form-control col-sm-12"></td>
-			    <td><input type="text" class="form-control col-sm-12"></td>
+			    <td><input type="text" class="form-control col-sm-12" name="nomor_kegiatan_tambahan_1" value="1"></td>
+			    <td><input type="text" name="ketTugasTam" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="akTam" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="kuantTam" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="kualTam" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="wakTam" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="biaTam" class="form-control col-sm-12"></td>
 			  </tr>
 			</table>
 	</div>
 		<div class="col-sm-12">
 			<div class="form-group pull-right">
-				<a href="#" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan Data</a>
+				<button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan Data</button>
 				<button type="reset" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash"></i> Ulangi</button>
 			</div>
 		</div>
@@ -342,7 +341,7 @@
     var cellOne = row.insertCell(0);
     var el = document.createElement('input');
     el.type = 'text';
-    el.name = 'nomor_kegiatan_' + iteration;
+    el.name = 'nomor_kegiatan_tambahan_' + iteration;
     el.value = iteration;
     el.id = 'txtRow';
 
