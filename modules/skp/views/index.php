@@ -41,12 +41,12 @@
     </li>
 </ul>
 <div class="row">
-	<form role="form" action="<?php echo base_url();?>skp/pembuatan/tambahKegiatan" method="post">
+	<form role="form" enctype='multipart/form-data'  action="<?php echo base_url();?>skp/pembuatan/tambahKegiatan" method="post">
 	<div class="col-sm-12">
 	    <h3>
 	    	Form Entry Formulir Sasaran Kinerja Pegawai (SKP)
 	    	<button type="button" data-toggle="modal" data-target="#pilih_pegawai" class="btn btn-md btn-primary pull-right"><i class="glyphicon glyphicon-user"></i> Pilih Pegawai Yang Akan Dinilai</button>
-	    </h3><br> 
+	    </h3><br>
 	    	<div class='col-sm-6'>
 	    		<?php $user = $this->ion_auth->get_data_user_by_id();
 	    			  $listuser = $this->ion_auth->get_user_name_all();
@@ -183,15 +183,15 @@
 			    <td>Waktu</td>
 			    <td>Biaya</td>
 			  </tr>
-			  <tr>
-			    <td><input type="text" class="form-control col-sm-12" name="nomor_kegiatan_1" value="1"></td>
-			    <td><input type="text" name="ketTugasJab" class="form-control col-sm-12" required></td>
-			    <td><input type="text" name="akJab" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="kuantJab" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="kualJab" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="wakJab" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="biaJab" class="form-control col-sm-12"></td>
-			  </tr>
+			 <tr>
+          <td><input type="text" class="form-control col-sm-12" name="pokok[1][nomor_kegiatan]" value="1"></td>
+          <td><input type="text" name="pokok[1][deskripsi_kegiatan]" class="form-control col-sm-12" required></td>
+          <td><input type="text" name="pokok[1][nilai_angka_kredit]" class="form-control col-sm-12"></td>
+          <td><input type="text" name="pokok[1][target_kuantitatif]" class="form-control col-sm-12"></td>
+          <td><input type="text" name="pokok[1][target_kualitas]" class="form-control col-sm-12"></td>
+          <td><input type="text" name="pokok[1][waktu]" class="form-control col-sm-12"></td>
+          <td><input type="text" name="pokok[1][biaya]" class="form-control col-sm-12"></td>
+        </tr>
 			</table>
     <?php } else { ?>
       <i>Silahkan pilih pegawai terlebih dahulu</i>
@@ -223,13 +223,13 @@
 			    <td>Biaya</td>
 			  </tr>
 			  <tr>
-			    <td><input type="text" class="form-control col-sm-12" name="nomor_kegiatan_tambahan_1" value="1"></td>
-			    <td><input type="text" name="ketTugasTam" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="akTam" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="kuantTam" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="kualTam" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="wakTam" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="biaTam" class="form-control col-sm-12"></td>
+			    <td><input type="text" class="form-control col-sm-12" name="tambahan[1][nomor_kegiatan]" value="1"></td>
+			    <td><input type="text" name="tambahan[1][deskripsi_kegiatan]" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="tambahan[1][nilai_angka_kredit]" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="tambahan[1][target_kuantitatif]" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="tambahan[1][target_kualitas]" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="tambahan[1][waktu]" class="form-control col-sm-12"></td>
+			    <td><input type="text" name="tambahan[1][biaya]" class="form-control col-sm-12"></td>
 			  </tr>
 			</table>
 	</div>
@@ -260,7 +260,7 @@
 	  var cellOne = row.insertCell(0);
     var el = document.createElement('input');
     el.type = 'text';
-    el.name = 'nomor_kegiatan_' + iteration;
+    el.name = 'pokok['+ iteration +'][nomor_kegiatan]';
     el.value = iteration;
     el.id = 'txtRow';
 
@@ -270,7 +270,7 @@
 	  var cellTwo = row.insertCell(1);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'pokok['+ iteration +'][deskripsi_kegiatan]';
 	  el.id = 'txtRow';
 
 	  cellTwo.appendChild(el);
@@ -278,7 +278,7 @@
 	  var cellThree = row.insertCell(2);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+    el.name = 'pokok['+ iteration +'][nilai_angka_kredit]';
 	  el.id = 'txtRow';
 
 	  cellThree.appendChild(el);
@@ -287,7 +287,7 @@
 	  var cellFour = row.insertCell(3);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'pokok['+ iteration +'][target_kuantitatif]';
 	  el.id = 'txtRow';
 
 	  cellFour.appendChild(el);
@@ -296,7 +296,7 @@
 	  var cellFive = row.insertCell(4);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'pokok['+ iteration +'][target_kualitas]';
 	  el.id = 'txtRow';
 
 	  cellFive.appendChild(el);
@@ -305,7 +305,7 @@
 	  var cellSix = row.insertCell(5);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'pokok['+ iteration +'][waktu]';
 	  el.id = 'txtRow';
 
 	  cellSix.appendChild(el);
@@ -314,7 +314,7 @@
 	  var cellSeven = row.insertCell(6);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'pokok['+ iteration +'][biaya]';
 	  el.id = 'txtRow';
 
 	  cellSeven.appendChild(el);
@@ -341,7 +341,7 @@
     var cellOne = row.insertCell(0);
     var el = document.createElement('input');
     el.type = 'text';
-    el.name = 'nomor_kegiatan_tambahan_' + iteration;
+    el.name = 'tambahan['+ iteration +'][nomor_kegiatan]';
     el.value = iteration;
     el.id = 'txtRow';
 
@@ -351,7 +351,7 @@
 	  var cellTwo = row.insertCell(1);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'tambahan['+ iteration +'][deskripsi_kegiatan]';
 	  el.id = 'txtRow';
 
 	  cellTwo.appendChild(el);
@@ -359,7 +359,7 @@
 	  var cellThree = row.insertCell(2);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'tambahan['+ iteration +'][nilai_angka_kredit]';
 	  el.id = 'txtRow';
 
 	  cellThree.appendChild(el);
@@ -368,7 +368,7 @@
 	  var cellFour = row.insertCell(3);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'tambahan['+ iteration +'][target_kuantitatif]';
 	  el.id = 'txtRow';
 
 	  cellFour.appendChild(el);
@@ -377,7 +377,7 @@
 	  var cellFive = row.insertCell(4);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'tambahan['+ iteration +'][target_kualitas]';
 	  el.id = 'txtRow';
 
 	  cellFive.appendChild(el);
@@ -386,7 +386,7 @@
 	  var cellSix = row.insertCell(5);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
+	  el.name = 'tambahan['+ iteration +'][waktu]';
 	  el.id = 'txtRow';
 
 	  cellSix.appendChild(el);
@@ -395,8 +395,8 @@
 	  var cellSeven = row.insertCell(6);
 	  var el = document.createElement('input');
 	  el.type = 'text';
-	  el.name = 'txtRow' + iteration;
-	  el.id = 'txtRow';
+	  el.name = 'tambahan['+ iteration +'][biaya]';
+	  el.id = 'biaTam';
 
 	  cellSeven.appendChild(el);
 
