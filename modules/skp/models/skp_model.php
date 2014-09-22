@@ -11,7 +11,7 @@ class skp_model extends CI_Model {
     $this->db->select('peg_id, peg_nama, peg_nip_baru');
     $this->db->from('spg_pegawai');
     $this->db->order_by('peg_nip_baru','desc');
-    $this->db->limit('10');
+    // $this->db->limit('10');
     $query = $this->db->get();
 
     return $query;
