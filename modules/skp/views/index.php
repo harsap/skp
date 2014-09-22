@@ -124,6 +124,7 @@
 	    	Kegiatan Tugas Pokok Jabatan
 	    </h3>
 	    <hr>
+      <?php if($this->uri->segment(3)) { ?>
 			<table class="table table-bordered table-stripped" id="tblJabatan">
 			  <tr>
 			 	<th colspan="7">
@@ -155,10 +156,14 @@
 			    <td><input type="text" name="" class="form-control col-sm-12"></td>
 			  </tr>
 			</table>
-	</div>
+    <?php } else { ?>
+      <i>Silahkan pilih pegawai terlebih dahulu</i>
+    <?php } ?>
+  	</div>
 	<div class="col-sm-12">
 	    <h3>Kegiatan Tugas Pokok Tambahan</h3>
 	    <hr>
+      <?php if($this->uri->segment(3)) { ?>
 			<table class="table table-bordered table-stripped" id="tblTambahan">
 			<tr>
 			 	<th colspan="7">
@@ -197,6 +202,9 @@
 				<button type="reset" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash"></i> Ulangi</button>
 			</div>
 		</div>
+    <?php } else { ?>
+      <i>Silahkan pilih pegawai terlebih dahulu</i>
+    <?php } ?>
 	</form>
 </div>
 
