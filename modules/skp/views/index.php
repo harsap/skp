@@ -85,6 +85,7 @@
 	    		</table>
 	    	</div>
 	    	<div class='col-sm-6'>
+
           <?php if($this->input->post('select_peg_id')) {
             $pegawai_result = $pegawai->row();
             ?>
@@ -173,7 +174,7 @@
 			  </tr>
 			  <tr>
 			    <th width="1%" rowspan="2">No.</th>
-			    <th rowspan="2" width="50%">Kegiatan Tugaas Pokok Jabatan</th>
+			    <th rowspan="2" width="50%">Kegiatan Tugas Pokok Jabatan</th>
 			    <th rowspan="2">AK</th>
 			    <th colspan="4">Target</th>
 			  </tr>
@@ -184,7 +185,7 @@
 			    <td>Biaya</td>
 			  </tr>
 			  <tr>
-			    <td>1</td>
+			    <td><input type="text" class="form-control col-sm-12" name="nomor_kegiatan_1" value="1"></td>
 			    <td><input type="text" name="" class="form-control col-sm-12"></td>
 			    <td><input type="text" name="" class="form-control col-sm-12"></td>
 			    <td><input type="text" name="" class="form-control col-sm-12"></td>
