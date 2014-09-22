@@ -24,10 +24,11 @@
                     <h4 class="modal-title" id="myModalLabel">Pilih Pegawai</h4>
                   </div>
                   <div class="modal-body">
-                    <select name="select_pegawai_dropdown" width="350px" class="pegawai-select col-sm-12">
+                    <form role="form" action="<?php echo base_url();?>skp/pembuatan/index" method="post">
+                    <select name="select_peg_id" width="350px" class="pegawai-select col-sm-12">
                     <?php
                       foreach ($list_pegawai->result() as $list_pegawai_result) {  ?>
-                        <option value="<?php echo $list_pegawai_result->peg_nip_baru ?>"><?php echo $list_pegawai_result->peg_nama ?> (<?php echo $list_pegawai_result->peg_nip_baru ?>)</option>
+                        <option value="<?php echo $list_pegawai_result->peg_id ?>"><?php echo $list_pegawai_result->peg_nama ?> (<?php echo $list_pegawai_result->peg_nip_baru ?>)</option>
                       <?php } ?>
                     </select>
 
@@ -39,7 +40,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Pilih Pegawai</button>
+                  </form>
                   </div>
                 </div>
               </div>
@@ -83,7 +85,7 @@
 	    		</table>
 	    	</div>
 	    	<div class='col-sm-6'>
-          <?php if($this->uri->segment(4)) {
+          <?php if($this->input->post('select_peg_id')) {
             $pegawai_result = $pegawai->row();
             ?>
 	    		<table class="col-sm-12 table table-bordered" id="tblDinilai">
@@ -159,7 +161,7 @@
 	    	Kegiatan Tugas Pokok Jabatan
 	    </h3>
 	    <hr>
-      <?php if($this->uri->segment(4)) { ?>
+      <?php if($this->input->post('select_peg_id')) { ?>
 			<table class="table table-bordered table-stripped" id="tblJabatan">
 			  <tr>
 			 	<th colspan="7">
@@ -198,7 +200,7 @@
 	<div class="col-sm-12">
 	    <h3>Kegiatan Tugas Pokok Tambahan</h3>
 	    <hr>
-      <?php if($this->uri->segment(4)) { ?>
+      <?php if($this->input->post('select_peg_id')) { ?>
 			<table class="table table-bordered table-stripped" id="tblTambahan">
 			<tr>
 			 	<th colspan="7">
