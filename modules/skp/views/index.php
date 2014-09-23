@@ -11,7 +11,7 @@
         <select name="select_peg_id" width="350px" class="pegawai-select col-sm-12">
         <?php
           foreach ($list_pegawai->result() as $list_pegawai_result) {  ?>
-            <option name="select_peg_id" value="<?php echo $list_pegawai_result->peg_id ?>"><?php echo $list_pegawai_result->peg_nama ?> (<?php echo $list_pegawai_result->peg_nip_baru ?>)</option>
+            <option name="select_peg_id" value="<?php echo $list_pegawai_result->peg_id ?>"><?php echo $list_pegawai_result->peg_nama ?> <?php echo $list_pegawai_result->peg_nip_baru ?></option>
           <?php } ?>
         </select>
         <script charset="utf-8">
