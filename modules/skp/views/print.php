@@ -176,14 +176,14 @@
 			    <td>Biaya</td>
 			  </tr>
 			 <tr>
-		<?php foreach ($kegiatan->result as $kegiatan_result) { ?>
-          <td><input type="text" class="form-control col-sm-12" name="pokok[1][nomor_kegiatan]" value="1"><?php echo $kegiatan_result->$nomor_kegiatan ?></td>
-          <td><input type="text" name="pokok[1][deskripsi_kegiatan]" class="form-control col-sm-12" required></td>
-          <td><input type="text" name="pokok[1][nilai_angka_kredit]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][target_kuantitatif]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][target_kualitas]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][waktu]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][biaya]" class="form-control col-sm-12"></td>
+		<?php foreach ($kegiatan->result() as $kegiatan_result) { ?>
+          <td><?php echo $kegiatan_result->$nomor_kegiatan ?></td>
+          <td><?php echo $kegiatan_result->$deskripsi_kegiatan ?></td>
+          <td><?php echo $kegiatan_result->$nilai_angka_kredit ?></td>
+          <td><?php echo $kegiatan_result->$target_kuantitatif ?></td>
+          <td><?php echo $kegiatan_result->$target_kualitas ?></td>
+          <td><?php echo $kegiatan_result->$waktu ?></td>
+          <td><?php echo $kegiatan_result->$biaya ?></td>
         </tr>
 			</table>
     <?php } } else { ?>

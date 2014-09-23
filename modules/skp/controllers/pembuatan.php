@@ -94,5 +94,4 @@ class pembuatan extends CI_Controller{
         //   $this->skp_model->tambah_kegiatan($data,$data2);
 
       }
-
 }
