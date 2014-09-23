@@ -66,10 +66,7 @@ class pembuatan extends CI_Controller{
 
       }
 
-      // debug
-      echo "<pre>";
-      var_dump($pokok);
-      var_dump($tambahan);
+      redirect('/skp/cetak/print_data/' . $this->input->post('nikPegawai'));
 
       }
 }
