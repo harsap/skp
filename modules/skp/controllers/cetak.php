@@ -9,13 +9,13 @@ if (!defined('BASEPATH')) {
  *
  * @author hari
  */
-class pembuatan extends CI_Controller{
+class cetak extends CI_Controller{
    public function __construct() {
         parent::__construct();
         $this->ion_auth->check_uri_permissions();
         $this->load->model('skp_model', 'skp_model');
     }
-    
+
     public function index() {
       $data['list_pegawai'] = $this->skp_model->get_all_pegawai();
       $peg_id = $this->input->post('select_peg_id');
@@ -23,6 +23,6 @@ class pembuatan extends CI_Controller{
         // $data['listgol'] = $this->personilmodel->getallgolongan();
         // $data['listeselon'] = $this->personilmodel->geteselon();
         $this->template->load('mainlayout', 'print', $data);
-    }  
+    }
 
 }
