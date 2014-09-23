@@ -45,7 +45,7 @@
 	<div class="col-sm-12">
 	    <h3>
 	    	Cetak Formulir Sasaran Kinerja Pegawai (SKP)
-	    	<button type="button" data-toggle="modal" data-target="#pilih_pegawai" class="btn btn-md btn-primary pull-right"><i class="glyphicon glyphicon-user"></i> Pilih Pegawai Yang Akan Dinilai</button>
+	    	<button type="button" data-toggle="modal" data-target="#pilih_pegawai" class="btn btn-md btn-primary pull-right"><i class="glyphicon glyphicon-user"></i> Pilih Pegawai</button>
 	    </h3><br>
 	    	<div class='col-sm-6'>
 	    		<?php $user = $this->ion_auth->get_data_user_by_id();
@@ -174,18 +174,19 @@
 			    <td>Waktu</td>
 			    <td>Biaya</td>
 			  </tr>
-		<?php foreach ($skp_pokok->result() as $kegiatan_result) {?>
-      <tr>
-        <td><?php echo $kegiatan_result->nomor_kegiatan; ?></td>
-        <td><?php echo $kegiatan_result->deskripsi_kegiatan; ?></td>
-        <td><?php echo $kegiatan_result->nilai_angka_kredit; ?></td>
-        <td><?php echo $kegiatan_result->target_kuantitatif; ?></td>
-        <td><?php echo $kegiatan_result->target_kualitas; ?></td>
-        <td><?php echo $kegiatan_result->waktu; ?></td>
-        <td><?php echo $kegiatan_result->biaya; ?></td>
-      </tr>
-    <?php } } else { ?>
-  </table>
+    		<?php foreach ($skp_pokok->result() as $kegiatan_result) {?>
+          <tr>
+            <td><?php echo $kegiatan_result->nomor_kegiatan; ?></td>
+            <td><?php echo $kegiatan_result->deskripsi_kegiatan; ?></td>
+            <td><?php echo $kegiatan_result->nilai_angka_kredit; ?></td>
+            <td><?php echo $kegiatan_result->target_kuantitatif; ?></td>
+            <td><?php echo $kegiatan_result->target_kualitas; ?></td>
+            <td><?php echo $kegiatan_result->waktu; ?></td>
+            <td><?php echo $kegiatan_result->biaya; ?></td>
+          </tr>
+        <?php } ?>
+      </table>
+      <?php } else { ?>
       <i>Silahkan pilih pegawai terlebih dahulu</i>
     <?php } ?>
   	</div>
@@ -206,22 +207,22 @@
 			    <td>Waktu</td>
 			    <td>Biaya</td>
 			  </tr>
-			  <tr>
-			    <td><input type="text" class="form-control col-sm-12" name="tambahan[1][nomor_kegiatan]" value="1"></td>
-			    <td><input type="text" name="tambahan[1][deskripsi_kegiatan]" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="tambahan[1][nilai_angka_kredit]" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="tambahan[1][target_kuantitatif]" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="tambahan[1][target_kualitas]" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="tambahan[1][waktu]" class="form-control col-sm-12"></td>
-			    <td><input type="text" name="tambahan[1][biaya]" class="form-control col-sm-12"></td>
-			  </tr>
+			 <?php foreach ($skp_tambahan->result() as $kegiatan_tambahan_result) {?>
+          <tr>
+            <td><?php echo $kegiatan_tambahan_result->nomor_kegiatan; ?></td>
+            <td><?php echo $kegiatan_tambahan_result->deskripsi_kegiatan; ?></td>
+            <td><?php echo $kegiatan_tambahan_result->nilai_angka_kredit; ?></td>
+            <td><?php echo $kegiatan_tambahan_result->target_kuantitatif; ?></td>
+            <td><?php echo $kegiatan_tambahan_result->target_kualitas; ?></td>
+            <td><?php echo $kegiatan_tambahan_result->waktu; ?></td>
+            <td><?php echo $kegiatan_tambahan_result->biaya; ?></td>
+          </tr>
+        <?php } ?>
 			</table>
 	</div>
 		<div class="col-sm-12">
 			<div class="form-group pull-right">
-				<button class="btn btn-success btn-lg"><i class="glyphicon glyphicon-print"></i> Cetak</button>
-				<!--button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan Data</button>
-				<button type="reset" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash"></i> Ulangi</button-->
+				<a target="_blank" href="<?php echo base_url('skp/cetak/print_data/') . '/' . $pegawai_result->peg_nip_baru;?>"class="btn btn-success btn-lg"><i class="glyphicon glyphicon-print"></i> Cetak</a>
 			</div>
 		</div>
     <?php } else { ?>

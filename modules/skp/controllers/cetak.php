@@ -31,4 +31,13 @@ class cetak extends CI_Controller{
       $this->template->load('mainlayout', 'print', $data);
     }
 
+    public function print_data($nik){
+      $data['pegawai'] = $this->skp_model->get_pegawai_by_nik($nik);
+
+      $data['skp_pokok'] = $this->skp_model->get_skp_pokok($nik);
+      $data['skp_tambahan'] = $this->skp_model->get_skp_tambahan($nik);
+
+      $this->load->view('cetak', $data);
+    }
+
 }
