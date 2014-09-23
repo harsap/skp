@@ -7,11 +7,11 @@
         <h4 class="modal-title" id="myModalLabel">Pilih Pegawai</h4>
       </div>
       <div class="modal-body">
-        <form role="form" action="<?php echo base_url();?>skp/pembuatan/cetak" method="post">
-        <select name="select_peg_id" width="350px" class="pegawai-select col-sm-12">
+        <form role="form" action="<?php echo base_url();?>skp/cetak" method="post">
+        <select name="select_c_nik_pgw" width="350px" class="pegawai-select col-sm-12">
         <?php
           foreach ($list_pegawai->result() as $list_pegawai_result) {  ?>
-            <option name="select_peg_id" value="<?php echo $list_pegawai_result->peg_id ?>"><?php echo $list_pegawai_result->peg_nama ?> (<?php echo $list_pegawai_result->peg_nip_baru ?>)</option>
+            <option name="select_c_nik_pgw" value="<?php echo $list_pegawai_result->peg_nip_baru ?>"><?php echo $list_pegawai_result->peg_nama ?> <?php echo $list_pegawai_result->peg_nip_baru ?></option>
           <?php } ?>
         </select>
         <script charset="utf-8">
@@ -84,8 +84,7 @@
 	    		</table>
 	    	</div>
 	    	<div class='col-sm-6'>
-
-          <?php if($this->input->post('select_peg_id')) {
+          <?php if($this->input->post('select_c_nik_pgw')) {
             $pegawai_result = $pegawai->row();
             ?>
 	    		<table class="col-sm-12 table table-bordered" id="tblDinilai">
@@ -161,7 +160,7 @@
 	    	Kegiatan Tugas Pokok Jabatan
 	    </h3>
 	    <hr>
-      <?php if($this->input->post('select_peg_id')) { ?>
+      <?php if($this->input->post('select_c_nik_pgw')) { ?>
 			<table class="table table-bordered table-stripped" id="tblJabatan">
 			  <tr>
 			    <th width="1%" rowspan="2">No.</th>
@@ -175,25 +174,25 @@
 			    <td>Waktu</td>
 			    <td>Biaya</td>
 			  </tr>
-			 <tr>
-		<?php foreach ($kegiatan->result() as $kegiatan_result) { ?>
-          <td><?php echo $kegiatan_result->$nomor_kegiatan ?></td>
-          <td><?php echo $kegiatan_result->$deskripsi_kegiatan ?></td>
-          <td><?php echo $kegiatan_result->$nilai_angka_kredit ?></td>
-          <td><?php echo $kegiatan_result->$target_kuantitatif ?></td>
-          <td><?php echo $kegiatan_result->$target_kualitas ?></td>
-          <td><?php echo $kegiatan_result->$waktu ?></td>
-          <td><?php echo $kegiatan_result->$biaya ?></td>
-        </tr>
-			</table>
+		<?php foreach ($skp_pokok->result() as $kegiatan_result) {?>
+      <tr>
+        <td><?php echo $kegiatan_result->nomor_kegiatan; ?></td>
+        <td><?php echo $kegiatan_result->deskripsi_kegiatan; ?></td>
+        <td><?php echo $kegiatan_result->nilai_angka_kredit; ?></td>
+        <td><?php echo $kegiatan_result->target_kuantitatif; ?></td>
+        <td><?php echo $kegiatan_result->target_kualitas; ?></td>
+        <td><?php echo $kegiatan_result->waktu; ?></td>
+        <td><?php echo $kegiatan_result->biaya; ?></td>
+      </tr>
     <?php } } else { ?>
+  </table>
       <i>Silahkan pilih pegawai terlebih dahulu</i>
     <?php } ?>
   	</div>
 	<div class="col-sm-12">
 	    <h3>Kegiatan Tugas Pokok Tambahan</h3>
 	    <hr>
-      <?php if($this->input->post('select_peg_id')) { ?>
+      <?php if($this->input->post('select_c_nik_pgw')) { ?>
 			<table class="table table-bordered table-stripped" id="tblTambahan">
 			  <tr>
 			    <th width="20px" rowspan="2">No.</th>

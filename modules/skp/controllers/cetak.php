@@ -18,11 +18,17 @@ class cetak extends CI_Controller{
 
     public function index() {
       $data['list_pegawai'] = $this->skp_model->get_all_pegawai();
-      $peg_id = $this->input->post('select_peg_id');
-      $data['pegawai'] = $this->skp_model->get_pegawai($peg_id);
-        // $data['listgol'] = $this->personilmodel->getallgolongan();
-        // $data['listeselon'] = $this->personilmodel->geteselon();
-        $this->template->load('mainlayout', 'print', $data);
+
+      $nik = $this->input->post('select_c_nik_pgw');
+
+      if($nik){
+        $data['pegawai'] = $this->skp_model->get_pegawai_by_nik($nik);
+
+        $data['skp_pokok'] = $this->skp_model->get_skp_pokok($nik);
+        $data['skp_tambahan'] = $this->skp_model->get_skp_tambahan($nik);
+      }
+
+      $this->template->load('mainlayout', 'print', $data);
     }
 
 }
