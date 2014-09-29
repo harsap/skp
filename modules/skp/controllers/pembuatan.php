@@ -27,6 +27,10 @@ class pembuatan extends CI_Controller{
 
     public function tambahKegiatan(){
 
+     // echo $_POST['pokok'][0]['deskripsi_kegiatan'];
+     // echo $_POST['pokok'][1]['deskripsi_kegiatan'];
+     // echo $_POST['pokok'][2]['deskripsi_kegiatan'];
+     
       $i = 1;
       foreach($_POST['pokok'] as $pokok)
       {
@@ -41,7 +45,7 @@ class pembuatan extends CI_Controller{
             'waktu'=>$_POST['pokok'][$i]['waktu'],
             'biaya'=>$_POST['pokok'][$i]['biaya'],
             'tgl_pengajuan' =>date('Y-m-d'));
-          $this->db->insert('public.tminputskp',$pokok);
+          //$this->db->insert('public.tminputskp',$pokok);
           $i++;
       }
 
@@ -66,7 +70,7 @@ class pembuatan extends CI_Controller{
 
       }
 
-      redirect('/skp/cetak/print_data/' . $this->input->post('nikPegawai'));
+      //redirect('/skp/cetak/print_data/' . $this->input->post('nikPegawai'));
 
       }
 }

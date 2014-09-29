@@ -183,15 +183,18 @@
 			    <td>Waktu</td>
 			    <td>Biaya</td>
 			  </tr>
+			  <!--
 			 <tr>
-          <td><input type="text" class="form-control col-sm-12" name="pokok[1][nomor_kegiatan]" value="1"></td>
-          <td><input type="text" name="pokok[1][deskripsi_kegiatan]" class="form-control col-sm-12" required></td>
-          <td><input type="text" name="pokok[1][nilai_angka_kredit]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][target_kuantitatif]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][target_kualitas]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][waktu]" class="form-control col-sm-12"></td>
-          <td><input type="text" name="pokok[1][biaya]" class="form-control col-sm-12"></td>
-        </tr>
+	          <td><input type="text" class="form-control col-sm-12" name="pokok[1][nomor_kegiatan]" value="1"></td>
+	          <td><input type="text" id="pokok[1][deskripsi_kegiatan]" name="pokok[1][deskripsi_kegiatan]" class="form-control col-sm-12" required></td>
+	          <td><input type="text" name="pokok[1][nilai_angka_kredit]" class="form-control col-sm-12"></td>
+	          <td><input type="text" name="pokok[1][target_kuantitatif]" class="form-control col-sm-12"></td>
+	          <td><input type="text" name="pokok[1][target_kualitas]" class="form-control col-sm-12"></td>
+	          <td><input type="text" name="pokok[1][waktu]" class="form-control col-sm-12"></td>
+	          <td><input type="text" name="pokok[1][biaya]" class="form-control col-sm-12"></td>
+        </tr> -->
+             
+
 			</table>
     <?php } else { ?>
       <i>Silahkan pilih pegawai terlebih dahulu</i>
@@ -247,6 +250,12 @@
 
 <script type='text/javascript'>
 
+	function res(){
+		var bar = document.getElementById('pokok[1][deskripsi_kegiatan]').value;
+		var jar = document.getElementById('pokok[2][deskripsi_kegiatan]').value;
+
+		alert(bar + " " + jar);
+	}
 
 	function addRowToTable()
 	{
@@ -256,6 +265,7 @@
 	  var iteration = lastRow - 2;
 	  var row = tbl.insertRow(lastRow);
 
+	  
 	  // left cell
 	  var cellOne = row.insertCell(0);
     var el = document.createElement('input');
@@ -317,9 +327,7 @@
 	  el.name = 'pokok['+ iteration +'][biaya]';
 	  el.id = 'txtRow';
 
-	  cellSeven.appendChild(el);
-
-
+	  cellSeven.appendChild(el);		
 	}
 
 	function removeRowFromTable()
